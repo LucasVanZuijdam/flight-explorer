@@ -13,7 +13,7 @@ class AirportSerializer(serializers.ModelSerializer):
             "country",
         ]
 
-class SearchSerializer(serializers.ModelSerializer):
+class FlightSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = FlightSearch
         fields = [

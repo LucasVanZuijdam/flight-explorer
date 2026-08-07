@@ -19,3 +19,6 @@ class FlightSearch(models.Model):
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.origin.iata_code} - {self.departure_date}"

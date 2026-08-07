@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from flights.models import Airport, FlightSearch
-from .serializers import AirportSerializer, SearchSerializer
+from .serializers import AirportSerializer, FlightSearchSerializer
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 
@@ -35,7 +35,7 @@ def airports(request):
 
 @api_view(["POST"])
 def create_search(request):
-    serializer = SearchSerializer(data=request.data)
+    serializer = FlightSearchSerializer(data=request.data)
 
     if serializer.is_valid():
         serializer.save()
@@ -57,7 +57,7 @@ def get_search(request, search_id):
         id=search_id,
     )
 
-    serializer = SearchSerializer(search)
+    serializer = FlightSearchSerializer(search)
 
     return Response(serializer.data)
 
